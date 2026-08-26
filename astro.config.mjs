@@ -12,4 +12,6 @@ export default defineConfig({
   },
 
   integrations: [solidJs()],
+
+  site: "https://doyouwantto2.github.io",
 });
