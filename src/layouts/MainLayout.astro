@@ -1,0 +1,7 @@
+---
+import Switcher from "@commons/switcher/Swither";
+import "@styles/global.css";
+---
+
+<slot />
+<Switcher client:load currentPath={Astro.url.pathname} />
