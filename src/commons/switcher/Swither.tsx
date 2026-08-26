@@ -15,7 +15,7 @@ const pathList: PathProps[] = [
   { name: "Home", link: "/" },
   { name: "Post", link: "/post" },
   { name: "Project", link: "/project" },
-  { name: "Lab", link: "/lab" },
+  { name: "About", link: "/about" },
 ];
 
 export default function Switcher(props: SwitcherProps) {
@@ -28,13 +28,13 @@ export default function Switcher(props: SwitcherProps) {
     pathList.filter((element) => element.link !== props.currentPath);
 
   return (
-    <div class="fixed bottom-10 left-10">
+    <div class="fixed bottom-10 left-10 z-10">
       <div onClick={() => setOpen((value) => !value)}>
         <MainOrb name={current()?.name ?? ""} />
       </div>
 
       {open() && (
-        <div>
+        <div class="">
           <For each={children()}>
             {(element) => <ChildOrb name={element.name} link={element.link} />}
           </For>
