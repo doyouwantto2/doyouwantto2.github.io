@@ -9,7 +9,7 @@ export default function PostCard({ post }: Props) {
 
   return (
     <div class="border w-fit">
-      <a href={content.id}>{content.title}</a>
+      <a href={"/post/" + content.id}>{content.title}</a>
       <div> {content.description}</div>
       <div> {content.tags}</div>
       <div> {content.pubDate.toDateString()}</div>
