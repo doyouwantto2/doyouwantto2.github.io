@@ -9,8 +9,7 @@ export default function projectCard({ project }: Props) {
 
   return (
     <div class="border w-fit">
-      <a href={"project/" + content.id}> {content.id}</a>
-      <div> {content.name}</div>
+      <a href={content.id}> {content.name}</a>
       <div> {content.description}</div>
       <div> {content.url}</div>
       <div> {content.languages}</div>
