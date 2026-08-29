@@ -21,11 +21,13 @@ const pathList: PathProps[] = [
 export default function Switcher(props: SwitcherProps) {
   const [open, setOpen] = createSignal(false);
 
-  const current = () =>
-    pathList.find((element) => element.link === props.currentPath);
+  const current = () => {
+    const sorted = [...pathList].sort((a, b) => b.link.length - a.link.length);
+    return sorted.find((item) => props.currentPath.startsWith(item.link));
+  };
 
   const children = () =>
-    pathList.filter((element) => element.link !== props.currentPath);
+    pathList.filter((element) => element.link !== current()?.link);
 
   return (
     <div class="fixed bottom-10 left-10 z-10">
