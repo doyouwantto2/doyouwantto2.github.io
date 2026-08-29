@@ -1,0 +1,19 @@
+---
+import Search from "@commons/search/Search";
+import Profile from "@commons/profile/Profile";
+import Breadcrumb from "@commons/breadcrumb/Breadcrumb";
+---
+
+<div>Banner</div>
+<Search />
+
+<div class="grid grid-cols-15">
+  <div class="col-span-3">
+    <Profile />
+  </div>
+
+  <div class="col-span-12">
+    <Breadcrumb base="Post" />
+    <slot />
+  </div>
+</div>
