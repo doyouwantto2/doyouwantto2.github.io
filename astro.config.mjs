@@ -15,5 +15,5 @@ export default defineConfig({
 
   site: "https://doyouwantto2.github.io",
 
-  base: "doyouwantto2.github.io",
+  base: "/",
 });
