@@ -9,7 +9,7 @@ export default function projectCard({ project }: Props) {
 
   return (
     <div class="border w-fit">
-      <a href={content.id}> {content.name}</a>
+      <a href={"/project/" + content.id}> {content.name}</a>
       <div> {content.description}</div>
       <div> {content.url}</div>
       <div> {content.languages}</div>
