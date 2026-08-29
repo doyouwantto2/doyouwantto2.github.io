@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PostLayout from "@/layouts/PostLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("post");
+  return posts.map((post) => ({
+    params: { id: post.data.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const content = post.data;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Post</title>
+  </head>
+
+  <body>
+    <BaseLayout>
+      <PostLayout>
+        <div class="grid grid-cols-10">
+          <div class="col-span-8 border">
+            <p>{content.title}</p>
+            <p>{content.description}</p>
+          </div>
+          <div class="col-span-2 border">Scrollpy</div>
+        </div>
+      </PostLayout>
+    </BaseLayout>
+  </body>
+</html>

@@ -1,6 +1,8 @@
 ---
 import "@styles/global.css";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import PostCard from "@commons/card/PostCard";
+import PostLayout from "@layouts/PostLayout.astro";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("post");
@@ -18,10 +20,9 @@ const posts = await getCollection("post");
 
   <body>
     <BaseLayout>
-      <div class="grid grid-cols-9">
-        <div class="col-span-2">Introduction</div>
-        <div>Content</div>
-      </div>
+      <PostLayout>
+        {posts.map((item) => <PostCard post={item} />)}
+      </PostLayout>
     </BaseLayout>
   </body>
 </html>
