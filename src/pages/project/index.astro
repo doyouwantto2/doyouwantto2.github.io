@@ -21,10 +21,10 @@ const project = await getCollection("project");
   <body>
     <BaseLayout>
       <div class="grid grid-cols-15">
-        <div class="col-span-12 border">
+        <div class="col-span-11 border items-center justify-items-center">
           {project.map((item) => <ProjectCard project={item} />)}
         </div>
-        <div class="col-span-3">
+        <div class="col-span-4">
           <Analysis />
         </div>
       </div>
