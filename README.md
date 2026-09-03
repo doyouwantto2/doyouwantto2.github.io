@@ -40,6 +40,16 @@ $$
 \frac{(2m - 1)\pi}{4n}
 $$
 
+Có lẽ ta nên áp dụng hàm tan. Ở đây thì ta biết rằng tan = x / y thế thì sau khi có được kết quả rồi thì ta có thể quy đổi ra. Nhưng có 1 vấn đề đó là ta cần biết bán kính. Không sao, vẫn tính được. Cơ mà nếu xài tan thì hai trong 1 nhưng liệu có rườm rà quá không nhỉ. ta chỉ biết tỷ lệ giữa x và y, làm sao ta biết được vị trí thực tế của x và y trong hệ tọa độ gốc nếu không biết được bán kính. 
+
+Liệu có nên sử dụng sin^2(x) + cos^2(y) = 1 không?
+
+Thôi, có lẽ sử dụng cách đơn giản là an toàn nhất. sin cho trục x và cos cho trục y. 
+
+- sin(result) = y / r
+
+- cos(result) = x / r
+
 ## Profile
  ### Tag
  ### Social information
