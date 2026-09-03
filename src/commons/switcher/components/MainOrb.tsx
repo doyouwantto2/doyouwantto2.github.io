@@ -4,7 +4,7 @@ interface MainOrbProps {
 
 export default function MainOrb(props: MainOrbProps) {
   return (
-    <div class="cursor-pointer">
+    <div class="border cursor-pointer">
       <a>{props.name}</a>
     </div>
   );
