@@ -19,9 +19,9 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = createSignal(false);
 
   const base: orbPosition = {
-    x: 6,
-    y: 4,
-    r: 170,
+    x: 9,
+    y: 7,
+    r: 180,
   };
 
   const current = () => {
@@ -29,8 +29,16 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
     return sorted.find((item) => currentPath.startsWith(item.link));
   };
 
-  const children = () =>
-    pathList.filter((element) => element.link !== current()?.link);
+  const children = () => {
+    const currentIndex = pathList.findIndex(
+      (item) => item.link === current()?.link,
+    );
+
+    return Array.from(
+      { length: pathList.length - 1 },
+      (_, i) => pathList[(currentIndex + 1 + i) % pathList.length],
+    );
+  };
 
   return (
     <div
@@ -45,7 +53,19 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
           class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
           onClick={() => setOpen((value) => !value)}
         >
-          <MainOrb name={current()?.name ?? ""} />
+          {open() == true ? (
+            <MainOrb
+              class="border cursor-pointer rounded-full h-18 w-18 flex items-center justify-center"
+              open={open()}
+              name={current()?.name ?? ""}
+            />
+          ) : (
+            <MainOrb
+              class="border cursor-pointer rounded-full h-20 w-20 flex items-center justify-center"
+              open={open()}
+              name={current()?.name ?? ""}
+            />
+          )}
         </div>
 
         {open() && (
