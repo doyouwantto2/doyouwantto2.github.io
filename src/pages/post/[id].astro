@@ -1,6 +1,10 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Breadcrumb from "@commons/breadcrumb/Breadcrumb";
+import { Image } from "astro:assets";
+import Banner from "../../assets/Banner.jpg";
+import Search from "@commons/search/Search";
 import PostLayout from "@layouts/PostLayout.astro";
 
 export async function getStaticPaths() {
@@ -12,7 +16,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const content = post.data;
+const { Content } = await render(post);
 ---
 
 <html lang="en">
@@ -27,13 +31,34 @@ const content = post.data;
 
   <body>
     <BaseLayout>
+      <div class="relative">
+        <Image src={Banner} alt="Hi there" class="w-full h-50 object-cover" />
+
+        <Search />
+      </div>
+
       <PostLayout>
-        <div class="grid grid-cols-10">
-          <div class="col-span-8 border">
-            <p>{content.title}</p>
-            <p>{content.description}</p>
+        <div class="grid grid-cols-30">
+          <div class="col-span-22">
+            <Breadcrumb
+              name="Post"
+              link="post"
+              title={post.data.title}
+              id={post.data.id}
+            />
+
+            <div class="border w-full mt-5 mb-5">
+              <Content />
+            </div>
           </div>
-          <div class="col-span-2 border">Scrollpy</div>
+          <div class="col-span-1"></div>
+
+          <div class="col-span-6">
+            Scroll py
+            <div class="border">Content</div>
+          </div>
+
+          <div class="col-span-1"></div>
         </div>
       </PostLayout>
     </BaseLayout>

@@ -3,6 +3,10 @@ import "@styles/global.css";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import PostCard from "@commons/card/PostCard";
 import PostLayout from "@layouts/PostLayout.astro";
+import { Image } from "astro:assets";
+import Banner from "../../assets/Banner.jpg";
+import Search from "@commons/search/Search";
+import Breadcrumb from "@commons/breadcrumb/Breadcrumb";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("post");
@@ -20,8 +24,31 @@ const posts = await getCollection("post");
 
   <body>
     <BaseLayout>
+      <div class="relative">
+        <Image src={Banner} alt="Hi there" class="w-full h-50 object-cover" />
+
+        <Search />
+      </div>
+
       <PostLayout>
-        {posts.map((item) => <PostCard post={item} />)}
+        <div class="grid grid-cols-30">
+          <div class="col-span-22">
+            <Breadcrumb name="Post" link="post" id="" title="" />
+
+            <div class="justify-items-center border">
+              {posts.map((item) => <PostCard client:load post={item} />)}
+            </div>
+          </div>
+
+          <div class="col-span-1"></div>
+
+          <div class="col-span-6">
+            Time track
+            <div class="border">Content</div>
+          </div>
+
+          <div class="col-span-1"></div>
+        </div>
       </PostLayout>
     </BaseLayout>
   </body>
