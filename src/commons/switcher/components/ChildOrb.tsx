@@ -69,7 +69,7 @@ export default function ChildOrb(props: ChildOrbProps) {
   return (
     <div
       ref={ref}
-      class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 pointer-events-auto"
+      class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 pointer-events-auto border cursor-pointer rounded-full h-22 w-22 flex items-center justify-center"
     >
       <a href={props.link}>{props.name}</a>
     </div>
