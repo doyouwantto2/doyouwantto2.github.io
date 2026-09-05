@@ -12,13 +12,14 @@ Nếu vị trí gốc tọa độ đặt tại x_0 và y_0 thì ta có xác đ�
 
 Vậy giờ thì chúng ta có hai loại bán kính, thứ nhất là bán kính của mainorb và thứ hai là childorb. Nếu thế thì ta nên đặt hai đại lượng. Thứ nhất là R_m và R_c.
 
-Trong đó: 
+Trong đó:
+
 - R_m: Bán kính của MainOrb
 - R_c: Bán kính của ChildOrb
 
-Nhưng ta chỉ sử dụng 1 / 4 góc của MainOrb. Căn cứ theo hệ tọa độ thì ta có vị trí quay từ phải qua trái theo góc phần tư. Trong đó vị trí góc mà ta đề cập tới sẽ di chuyển từ $$0$$ đến $$\pi/2$$. 
+Nhưng ta chỉ sử dụng 1 / 4 góc của MainOrb. Căn cứ theo hệ tọa độ thì ta có vị trí quay từ phải qua trái theo góc phần tư. Trong đó vị trí góc mà ta đề cập tới sẽ di chuyển từ $$0$$ đến $$\pi/2$$.
 
-Đơn vị cơ bản nhất để ta cộng thêm và xác định của mỗi khoảng là $$\pi/(2*n)$$. Muốn biết nó nằm tại vị trí thứ mấy trong khoảng nào thì ta lấy $$\pi/(2*n)$$ trong đó n được tính từ 1. 
+Đơn vị cơ bản nhất để ta cộng thêm và xác định của mỗi khoảng là $$\pi/(2*n)$$. Muốn biết nó nằm tại vị trí thứ mấy trong khoảng nào thì ta lấy $$\pi/(2*n)$$ trong đó n được tính từ 1.
 
 Giả sử nếu chia làm 3 vùng thì sẽ có 2 vạch kẻ chính để ta phân chia ra. Nhưng ta có thể coi N ở đây tương ứng với số ChildOrb, sử dụng nguyên tắc của trò chơi chia thanh ngôi sao trong toán rời rạc.
 
@@ -40,19 +41,25 @@ $$
 \frac{(2m - 1)\pi}{4n}
 $$
 
-Có lẽ ta nên áp dụng hàm tan. Ở đây thì ta biết rằng tan = x / y thế thì sau khi có được kết quả rồi thì ta có thể quy đổi ra. Nhưng có 1 vấn đề đó là ta cần biết bán kính. Không sao, vẫn tính được. Cơ mà nếu xài tan thì hai trong 1 nhưng liệu có rườm rà quá không nhỉ. ta chỉ biết tỷ lệ giữa x và y, làm sao ta biết được vị trí thực tế của x và y trong hệ tọa độ gốc nếu không biết được bán kính. 
+Có lẽ ta nên áp dụng hàm tan. Ở đây thì ta biết rằng tan = x / y thế thì sau khi có được kết quả rồi thì ta có thể quy đổi ra. Nhưng có 1 vấn đề đó là ta cần biết bán kính. Không sao, vẫn tính được. Cơ mà nếu xài tan thì hai trong 1 nhưng liệu có rườm rà quá không nhỉ. ta chỉ biết tỷ lệ giữa x và y, làm sao ta biết được vị trí thực tế của x và y trong hệ tọa độ gốc nếu không biết được bán kính.
 
 Liệu có nên sử dụng sin^2(x) + cos^2(y) = 1 không?
 
-Thôi, có lẽ sử dụng cách đơn giản là an toàn nhất. sin cho trục x và cos cho trục y. 
+Thôi, có lẽ sử dụng cách đơn giản là an toàn nhất. sin cho trục x và cos cho trục y.
 
 - sin(result) = y / r
 
 - cos(result) = x / r
 
 ## Profile
- ### Tag
- ### Social information
+
+### Tag
+
+### Social information
+
 ## Search
 
-
+| A     | B      |
+| ----- | ------ |
+| Câu 1 | Câu 1' |
+| Câu 2 | Câu 2' |
