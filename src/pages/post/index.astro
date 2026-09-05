@@ -35,7 +35,7 @@ const posts = await getCollection("post");
           <div class="col-span-22">
             <Breadcrumb name="Post" link="post" id="" title="" />
 
-            <div class="justify-items-center border">
+            <div class="justify-items-center border rounded-2xl pl-5 pr-5">
               {posts.map((item) => <PostCard client:load post={item} />)}
             </div>
           </div>
