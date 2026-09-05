@@ -54,19 +54,19 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
           class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
           onClick={() => setOpen((value) => !value)}
         >
-          {open() == true ? (
-            <MainOrb
-              class="border cursor-pointer rounded-full h-15 w-15 sm:h-16 sm:w-16 sm:rounded-full md:h-17 md:w-17 md:rounded-full lg:h-18 lg:w-18 lg:rounded-full flex items-center justify-center"
-              open={open()}
-              name={current()?.name ?? ""}
-            />
-          ) : (
-            <MainOrb
-              class="border cursor-pointer rounded-full h-17 w-17 sm:w-18 sm:h-18 sm:rounded-full md:h-19 md:w-19 md:rounded-full lg:h-20 lg:w-20 lg:rounded-full flex items-center justify-center"
-              open={open()}
-              name={current()?.name ?? ""}
-            />
-          )}
+          <MainOrb
+            class={`
+      border cursor-pointer rounded-full flex items-center justify-center
+      transition-all duration-300 ease-in-out
+      ${
+        open()
+          ? "h-15 w-15 sm:h-16 sm:w-16 md:h-17 md:w-17 lg:h-18 lg:w-18"
+          : "h-17 w-17 sm:w-18 sm:h-18 md:h-19 md:w-19 lg:h-20 lg:w-20"
+      }
+    `}
+            open={open()}
+            name={current()?.name ?? ""}
+          />
         </div>
 
         <div class="absolute top-0 left-0 w-0 h-0 pointer-events-none">

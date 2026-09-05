@@ -54,9 +54,8 @@ export default function ChildOrb(props: ChildOrbProps) {
         yPercent: -50,
         opacity: 1,
         scale: 1,
-        duration: 0.8,
+        duration: 0.3,
         delay: 0.05,
-        ease: "back.out(1.8)",
         paused: true,
       });
     }
@@ -73,9 +72,10 @@ export default function ChildOrb(props: ChildOrbProps) {
   });
 
   return (
-    <div
-      ref={ref}
-      class="
+    <a href={props.link}>
+      <div
+        ref={ref}
+        class="
         absolute top-0 left-0
         -translate-x-1/2 -translate-y-1/2
         rounded-full
@@ -95,12 +95,13 @@ export default function ChildOrb(props: ChildOrbProps) {
 
         flex items-center justify-center
       "
-      classList={{
-        "pointer-events-auto": props.open,
-        "pointer-events-none": !props.open,
-      }}
-    >
-      <a href={props.link}>{props.name}</a>
-    </div>
+        classList={{
+          "pointer-events-auto": props.open,
+          "pointer-events-none": !props.open,
+        }}
+      >
+        {props.name}
+      </div>
+    </a>
   );
 }
