@@ -8,7 +8,7 @@ export default function projectCard({ project }: Props) {
   const content = project.data;
 
   return (
-    <div class="border w-[95%] mt-5 rounded-xl p-5">
+    <div class="w-[95%] mt-5 p-5">
       <div class="flex flex-row">
         <p> {content.name}</p>
         <a href={content.url}>icon</a>
@@ -17,7 +17,6 @@ export default function projectCard({ project }: Props) {
       <div> {content.url}</div>
       <div> {content.languages}</div>
       <div> {content.pubDate.toDateString()}</div>
-      <div> {content.updatedDate.toDateString()}</div>
     </div>
   );
 }
