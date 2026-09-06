@@ -1,11 +1,20 @@
 ---
-import "@styles/global.css";
+import { getCollection, render } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import MarkdownLayout from "@layouts/MarkdownLayout.astro";
 import ProjectCard from "./components/ProjectCard";
 import Analysis from "./components/Analysis";
-import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Banner from "../../assets/Banner.jpg";
 
-const project = await getCollection("project");
+const projects = await getCollection("project");
+
+const renderedProjects = await Promise.all(
+  projects.map(async (project) => ({
+    project,
+    Content: (await render(project)).Content,
+  })),
+);
 ---
 
 <html lang="en">
@@ -19,12 +28,40 @@ const project = await getCollection("project");
   </head>
 
   <BaseLayout>
-    <div class="grid grid-cols-15">
-      <div class="col-span-11 items-center justify-items-center">
-        {project.map((item) => <ProjectCard client:load project={item} />)}
+    <Image src={Banner} alt="Hi there" class="h-60 w-full object-cover" />
+
+    <div class="flex gap-5 mt-5">
+      <div class="w-[73.333%] flex flex-col gap-5 m-5">
+        {
+          renderedProjects.map(({ project, Content }) => (
+            <div class="p-5 rounded-2xl border border-gray-400 bg-gray-700">
+              <ProjectCard client:load project={project} />
+
+              <details class="group">
+                <summary class="flex cursor-pointer list-none items-center justify-center py-3 text-sm text-gray-400 hover:text-white [&::-webkit-details-marker]:hidden">
+                  <span class="group-open:hidden">Show content</span>
+                  <span class="hidden group-open:inline">Hide content</span>
+
+                  <span class="ml-2 transition-transform group-open:rotate-180">
+                    ↓
+                  </span>
+                </summary>
+
+                <div class="rounded-2xl bg-gray-600 p-5">
+                  <MarkdownLayout>
+                    <Content />
+                  </MarkdownLayout>
+                </div>
+              </details>
+            </div>
+          ))
+        }
       </div>
-      <div class="col-span-4 border rounded-2xl p-5 h-fit">
-        <Analysis client:load />
+
+      <div class="w-[26.667%]">
+        <div class="sticky top-5 h-fit m-5 rounded-2xl border">
+          <Analysis client:load />
+        </div>
       </div>
     </div>
   </BaseLayout>
