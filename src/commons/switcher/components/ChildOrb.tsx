@@ -94,6 +94,11 @@ export default function ChildOrb(props: ChildOrbProps) {
         lg:[--orb-r:180em]
 
         flex items-center justify-center
+
+        bg-white
+        text-black
+
+        hover:bg-gray-200
       "
         classList={{
           "pointer-events-auto": props.open,

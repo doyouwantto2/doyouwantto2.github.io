@@ -45,8 +45,11 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
         sm:left-[7em]
         sm:bottom-[7em]
 
-        md:left-[8em]
-        md:bottom-[8em]
+        md:left-[7em]
+        md:bottom-[7em]
+
+        lg:left-[8em]
+        lg:right-[8em]
       "
     >
       <div class="relative w-0 h-0">
@@ -57,7 +60,8 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
           <MainOrb
             class={`
       border cursor-pointer rounded-full flex items-center justify-center
-      transition-all duration-300 ease-in-out
+      transition-all duration-300 ease-in-out bg-white text-black
+
       ${
         open()
           ? "h-15 w-15 sm:h-16 sm:w-16 md:h-17 md:w-17 lg:h-18 lg:w-18"
