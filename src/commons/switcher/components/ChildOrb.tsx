@@ -79,7 +79,7 @@ export default function ChildOrb(props: ChildOrbProps) {
         absolute top-0 left-0
         -translate-x-1/2 -translate-y-1/2
         rounded-full
-        border cursor-pointer
+        cursor-pointer
 
         h-20 w-20
         [--orb-r:140em]

@@ -59,7 +59,7 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
         >
           <MainOrb
             class={`
-      border cursor-pointer rounded-full flex items-center justify-center
+      cursor-pointer rounded-full flex items-center justify-center
       transition-all duration-300 ease-in-out bg-white text-black
 
       ${
