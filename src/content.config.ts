@@ -13,7 +13,6 @@ const project = defineCollection({
     url: z.string(),
     languages: z.array(string()),
     pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date(),
   }),
 });
 
@@ -25,7 +24,6 @@ const post = defineCollection({
     description: z.string(),
     tags: z.array(string()),
     pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date(),
   }),
 });
 
