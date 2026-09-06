@@ -3,5 +3,12 @@ import Switcher from "@commons/switcher/Swither";
 import "@styles/global.css";
 ---
 
-<slot />
-<Switcher client:load currentPath={Astro.url.pathname} />
+<body class="min-h-screen flex flex-col bg-gray-800 text-white">
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <Switcher client:load currentPath={Astro.url.pathname} />
+
+  <footer class="mt-20 self-end pr-10 pb-10 z-20">© 2026 doyouwantto2</footer>
+</body>
