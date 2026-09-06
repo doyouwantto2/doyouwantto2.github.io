@@ -1,55 +1,57 @@
 ---
 import "@styles/global.css";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import PostCard from "@commons/card/PostCard";
+import PostCard from "./components/PostCard";
 import PostLayout from "@layouts/PostLayout.astro";
+import Breadcrumb from "./components/Breadcrumb";
 import { Image } from "astro:assets";
 import Banner from "../../assets/Banner.jpg";
-import Search from "@commons/search/Search";
-import Breadcrumb from "@commons/breadcrumb/Breadcrumb";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("post");
+
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     <title>Post</title>
   </head>
 
-  <body>
-    <BaseLayout>
-      <div class="relative">
-        <Image src={Banner} alt="Hi there" class="w-full h-50 object-cover" />
+  <BaseLayout>
+    <Image src={Banner} alt="Hi there" class="h-60 w-full object-cover" />
 
-        <Search />
-      </div>
+    <PostLayout tags={tags}>
+      <Breadcrumb name="Post" link="post" id="" title="" />
 
-      <PostLayout>
-        <div class="grid grid-cols-30">
-          <div class="col-span-22">
-            <Breadcrumb name="Post" link="post" id="" title="" />
-
-            <div class="justify-items-center border rounded-2xl pl-5 pr-5">
-              {posts.map((item) => <PostCard client:load post={item} />)}
-            </div>
-          </div>
-
-          <div class="col-span-1"></div>
-
-          <div class="col-span-6">
-            Time track
-            <div class="border">Content</div>
-          </div>
-
-          <div class="col-span-1"></div>
+      <div class="rounded-2xl border border-gray-700 bg-gray-700 p-5">
+        <div class="flex flex-col gap-5">
+          {
+            posts.map((post) => (
+              <div data-post data-tags={post.data.tags.join(",")}>
+                <PostCard client:load post={post} />
+              </div>
+            ))
+          }
         </div>
-      </PostLayout>
-    </BaseLayout>
-  </body>
+      </div>
+    </PostLayout>
+  </BaseLayout>
 </html>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const selectedTags = params.getAll("tag");
+
+  document.querySelectorAll<HTMLElement>("[data-post]").forEach((post) => {
+    const tags = post.dataset.tags?.split(",") ?? [];
+
+    const visible =
+      selectedTags.length === 0 ||
+      selectedTags.every((tag) => tags.includes(tag));
+
+    post.hidden = !visible;
+  });
+</script>
