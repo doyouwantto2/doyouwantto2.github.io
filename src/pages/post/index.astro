@@ -24,7 +24,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
     <Image src={Banner} alt="Hi there" class="h-60 w-full object-cover" />
 
     <PostLayout tags={tags}>
-      <Breadcrumb name="Post" link="post" id="" title="" />
+      <Breadcrumb client:load name="Post" link="post" id="" title="" />
 
       <div class="rounded-2xl border border-gray-700 bg-gray-700 p-5">
         <div class="flex flex-col gap-5">
