@@ -8,7 +8,7 @@ export default function projectCard({ project }: Props) {
   const content = project.data;
 
   return (
-    <div class="border w-[95%] mt-5">
+    <div class="border w-[95%] mt-5 rounded-xl p-5">
       <div class="flex flex-row">
         <p> {content.name}</p>
         <a href={content.url}>icon</a>

@@ -1,8 +1,8 @@
 ---
 import "@styles/global.css";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import ProjectCard from "@commons/card/ProjectCard";
-import Analysis from "@commons/analysis/Analysis";
+import ProjectCard from "./components/ProjectCard";
+import Analysis from "./components/Analysis";
 import { getCollection } from "astro:content";
 
 const project = await getCollection("project");
@@ -18,16 +18,14 @@ const project = await getCollection("project");
     <title>Project</title>
   </head>
 
-  <body>
-    <BaseLayout>
-      <div class="grid grid-cols-15">
-        <div class="col-span-11 border items-center justify-items-center">
-          {project.map((item) => <ProjectCard project={item} />)}
-        </div>
-        <div class="col-span-4">
-          <Analysis />
-        </div>
+  <BaseLayout>
+    <div class="grid grid-cols-15">
+      <div class="col-span-11 items-center justify-items-center">
+        {project.map((item) => <ProjectCard project={item} />)}
       </div>
-    </BaseLayout>
-  </body>
+      <div class="col-span-4 border rounded-2xl p-5">
+        <Analysis />
+      </div>
+    </div>
+  </BaseLayout>
 </html>
