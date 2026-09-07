@@ -59,9 +59,8 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
         >
           <MainOrb
             class={`
-      cursor-pointer rounded-full flex items-center justify-center
-      transition-all duration-300 ease-in-out bg-white text-black
-
+              cursor-pointer rounded-full flex items-center 
+              transition-all duration-300 ease-in-out bg-white text-black justify-center
       ${
         open()
           ? "h-15 w-15 sm:h-16 sm:w-16 md:h-17 md:w-17 lg:h-18 lg:w-18"

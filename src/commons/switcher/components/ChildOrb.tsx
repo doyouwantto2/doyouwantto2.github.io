@@ -80,21 +80,12 @@ export default function ChildOrb(props: ChildOrbProps) {
         -translate-x-1/2 -translate-y-1/2
         rounded-full
         cursor-pointer
-
         h-20 w-20
         [--orb-r:140em]
-
-        sm:h-20 sm:w-20
-        sm:[--orb-r:160em]
-
-        md:h-20 md:w-20
-        md:[--orb-r:170em]
-
-        lg:h-22 lg:w-22
-        lg:[--orb-r:180em]
-
+        sm:h-20 sm:w-20 sm:[--orb-r:160em]
+        md:h-20 md:w-20 md:[--orb-r:170em]
+        lg:h-22 lg:w-22 lg:[--orb-r:180em]
         flex items-center justify-center
-
         bg-white
         text-black
 
