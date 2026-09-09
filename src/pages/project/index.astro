@@ -4,8 +4,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import MarkdownLayout from "@layouts/MarkdownLayout.astro";
 import ProjectCard from "./components/_ProjectCard";
 import Analysis from "./components/_Analysis";
-import { Image } from "astro:assets";
-import Banner from "../../assets/Banner.jpg";
+import { siUpptime } from "simple-icons";
 
 const projects = await getCollection("project");
 
@@ -28,26 +27,24 @@ const renderedProjects = await Promise.all(
   </head>
 
   <BaseLayout>
-    <Image src={Banner} alt="Hi there" class="h-60 w-full object-cover" />
-
-    <div class="flex gap-5 mt-5">
-      <div class="w-[73.333%] flex flex-col gap-5 m-5">
+    <div class="flex gap-5 mt-10">
+      <div class="w-[73.333%] flex flex-col gap-12 m-5">
         {
           renderedProjects.map(({ project, Content }) => (
-            <div class="p-5 rounded-2xl border border-gray-400 bg-gray-700">
+            <div class="p-5 rounded-2xl border border-gray-700 bg-gray-700">
               <ProjectCard client:load project={project} />
 
               <details class="group">
-                <summary class="flex cursor-pointer list-none items-center justify-center py-3 text-sm text-gray-400 hover:text-white [&::-webkit-details-marker]:hidden">
-                  <span class="group-open:hidden">Show content</span>
-                  <span class="hidden group-open:inline">Hide content</span>
-
-                  <span class="ml-2 transition-transform group-open:rotate-180">
-                    ↓
-                  </span>
+                <summary class="w-full border rounded-b-2xl group-open:rounded-none border-gray-600 cursor-pointer list-none items-center justify-center py-3 text-sm text-gray-400 hover:text-white [&::-webkit-details-marker]:hidden">
+                  <div class="flex flex-row justify-center">
+                    <span
+                      class="inline-block w-6 h-6 group-open:rotate-180 [&_svg]:fill-white"
+                      set:html={siUpptime.svg}
+                    />
+                  </div>
                 </summary>
 
-                <div class="rounded-2xl bg-gray-600 p-5">
+                <div class="rounded-b-2xl bg-gray-600 p-5">
                   <MarkdownLayout>
                     <Content />
                   </MarkdownLayout>
@@ -59,9 +56,7 @@ const renderedProjects = await Promise.all(
       </div>
 
       <div class="w-[26.667%]">
-        <div class="sticky top-5 h-fit m-5 rounded-2xl border">
-          <Analysis client:load />
-        </div>
+        <Analysis client:load />
       </div>
     </div>
   </BaseLayout>
