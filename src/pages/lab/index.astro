@@ -1,0 +1,26 @@
+---
+import "@styles/global.css";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Lab</title>
+  </head>
+
+  <BaseLayout>
+    <canvas id="three-canvas" class="fixed inset-0 h-screen w-screen"></canvas>
+  </BaseLayout>
+
+  <script>
+    import { createWater } from "../../shaders/water/water";
+
+    const canvas = document.querySelector<HTMLCanvasElement>("#three-canvas");
+
+    if (canvas) {
+      createWater(canvas);
+    }
+  </script>
+</html>
