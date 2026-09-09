@@ -14,7 +14,8 @@
       "@styles/*": ["src/styles/*"],
       "@commons/*": ["src/commons/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@content/*": ["content/*"]
+      "@content/*": ["content/*"],
+      "@shaders/*": ["shaders/*"]
     },
     "jsx": "preserve",
     "jsxImportSource": "solid-js"
