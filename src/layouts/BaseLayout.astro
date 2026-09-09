@@ -1,9 +1,13 @@
 ---
 import Switcher from "@commons/switcher/Swither";
 import "@styles/global.css";
+import { Image } from "astro:assets";
+import Banner from "../assets/Banner.jpg";
 ---
 
 <body class="min-h-screen flex flex-col bg-gray-800 text-white">
+  <Image src={Banner} alt="Hi there" class="h-55 w-full object-cover" />
+
   <main class="flex-1">
     <slot />
   </main>
