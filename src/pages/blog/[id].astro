@@ -1,0 +1,55 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import MarkdownLayout from "@layouts/MarkdownLayout.astro";
+import Breadcrumb from "./components/_Breadcrumb";
+import PostLayout from "@layouts/PostLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("post");
+
+  return posts.map((post) => ({
+    params: { id: post.data.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const posts = await getCollection("post");
+
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{post.data.title}</title>
+  </head>
+
+  <BaseLayout>
+    <PostLayout tags={tags}>
+      <Breadcrumb
+        name="Post"
+        link="blog"
+        title={post.data.title}
+        id={post.data.id}
+      />
+
+      <article class="w-full rounded-2xl bg-gray-700 p-5">
+        <div class="bg-gray-600 rounded-2xl p-5">
+          <MarkdownLayout>
+            <Content />
+          </MarkdownLayout>
+        </div>
+      </article>
+    </PostLayout>
+  </BaseLayout>
+
+
+</html>
