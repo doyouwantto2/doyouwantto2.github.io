@@ -14,8 +14,8 @@ import Terminal from "../profile/terminal/Terminal";
 
   <BaseLayout>
     <div class="flex flex-row m-10 gap-4 md:gap-6 lg:gap-8">
-      <Terminal client:load />
-      <Information client:visible />
+      <Terminal client:only="solid" title="doyouwantto2" />
+      <Information client:only="solid" />
     </div>
   </BaseLayout>
 </html>
