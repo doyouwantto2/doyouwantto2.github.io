@@ -12,25 +12,20 @@ export default function Detail() {
       </li>
       <li>
         <span class="font-bold">Technologies: </span>
-        <p>
-          - Tokio, Tauri, Astro, Solidjs, NodeJS, ReactJS, Ethereum, Postgresql,
-          Neo4j
-        </p>
+        Tokio, Tauri, Astro, Solidjs, NodeJS, ReactJS, Ethereum, Postgresql,
+        Neo4j
       </li>
       <li>
         <span class="font-bold">Languages: </span>
-        <p>
-          - Rust, C, C++, Ruby, HTML, CSS, Typescript, Javascript, Python,
-          Solidity
-        </p>
+        Rust, C, C++, Ruby, HTML, CSS, Typescript, Javascript, Python, Nix
       </li>
       <li>
         <span class="font-bold">OS: </span>
-        <p>- NixOS, Debian</p>
+        NixOS, Debian
       </li>
       <li>
         <span class="font-bold">Tools: </span>
-        <p>- Wezterm, Neovim, Vscode</p>
+        Wezterm, Neovim, Vscode
       </li>
     </ul>
   );
