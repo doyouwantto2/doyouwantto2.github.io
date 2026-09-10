@@ -28,6 +28,10 @@ export default function Detail() {
         <span class="font-bold">OS: </span>
         <p>- NixOS, Debian</p>
       </li>
+      <li>
+        <span class="font-bold">Tools: </span>
+        <p>- Wezterm, Neovim, Vscode</p>
+      </li>
     </ul>
   );
 }
