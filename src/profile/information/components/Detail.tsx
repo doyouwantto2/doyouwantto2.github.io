@@ -5,7 +5,7 @@ export default function Detail() {
         <span class="font-bold">Country: </span> Viet Nam
       </li>
       <li>
-        <span class="font-bold">English: </span>TOEIC 800
+        <span class="font-bold">English: </span>TOEIC
       </li>{" "}
       <li>
         <span class="font-bold">Japanese: </span>N2, BJT
