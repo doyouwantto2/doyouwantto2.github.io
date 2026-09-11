@@ -5,14 +5,20 @@ import { Image } from "astro:assets";
 import Banner from "../assets/Banner.jpg";
 ---
 
-<body class="min-h-screen flex flex-col bg-gray-800 text-white">
-  <Image src={Banner} alt="Hi there" class="h-55 w-full object-cover" />
+<body class="h-dvh overflow-hidden flex flex-col bg-gray-800 text-white">
+  <Image
+    src={Banner}
+    alt="Hi there"
+    class="h-56 w-full object-cover shrink-0"
+  />
 
-  <main class="flex-1">
+  <main class="flex-1 min-h-0">
     <slot />
   </main>
 
   <Switcher client:load currentPath={Astro.url.pathname} />
 
-  <footer class="mt-20 self-end pr-10 pb-10 z-20">© 2026 doyouwantto2</footer>
+  <footer class="shrink-0 self-end pr-10 pb-10 z-20">
+    © 2026 doyouwantto2
+  </footer>
 </body>
