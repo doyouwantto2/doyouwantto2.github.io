@@ -3,7 +3,7 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import MarkdownLayout from "@layouts/MarkdownLayout.astro";
 import Breadcrumb from "./components/_Breadcrumb";
-import PostLayout from "@layouts/PostLayout.astro";
+import BlogLayout from "@layouts/BlogLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("post");
@@ -33,7 +33,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
   </head>
 
   <BaseLayout>
-    <PostLayout tags={tags}>
+    <BlogLayout tags={tags}>
       <Breadcrumb
         name="Post"
         link="blog"
@@ -48,7 +48,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
           </MarkdownLayout>
         </div>
       </article>
-    </PostLayout>
+    </BlogLayout>
   </BaseLayout>
 
 
