@@ -7,7 +7,7 @@ interface BreadcrumbProps {
 
 export default function Breadcrumb({ link, name, id, title }: BreadcrumbProps) {
   const linkClass =
-    "rounded-xl pl-3 pr-3 pb-2 pt-2 w-fit mb-3 inline-block text-xl font-bold";
+    "text-green-400 rounded-xl pl-3 pr-3 pb-2 pt-2 w-fit mb-3 inline-block text-xl font-bold";
 
   return (
     <div>
