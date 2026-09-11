@@ -13,8 +13,7 @@ export default function FaceImg() {
           src={Face}
           alt="Nguyen Nam Phong"
           class="relative rounded-full object-cover ring-2 ring-gray-700/60
-                 h-17 w-17
-                 sm:h-22 sm:w-22
+                 h-45 w-45
                  md:h-47 md:w-47
                  lg:h-62 lg:w-62"
         />
