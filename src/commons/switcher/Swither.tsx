@@ -21,7 +21,6 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
 
   const current = () => {
     const sorted = [...pathList].sort((a, b) => b.link.length - a.link.length);
-
     return sorted.find((item) => currentPath.startsWith(item.link));
   };
 
@@ -48,7 +47,6 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
 
   onMount(() => {
     document.addEventListener("click", handleOutsideClick);
-
     onCleanup(() => {
       document.removeEventListener("click", handleOutsideClick);
     });
@@ -60,17 +58,10 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
       class="
         fixed z-10
 
-        left-[5em]
-        bottom-[5em]
-
-        sm:left-[7em]
-        sm:bottom-[7em]
-
-        md:left-[7em]
-        md:bottom-[7em]
-
-        lg:left-[8em]
-        lg:right-[8em]
+        left-[5em] bottom-[5em]
+        sm:left-[7em] sm:bottom-[7em]
+        md:left-[7em] md:bottom-[7em]
+        lg:left-[8em] lg:bottom-[8em]
       "
     >
       <div class="relative h-0 w-0">
@@ -81,8 +72,23 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
           <MainOrb
             class={`
               flex cursor-pointer items-center justify-center
-              rounded-full bg-white text-black
+              rounded-full
+              bg-white/60 backdrop-blur-xl
+              text-black
+              ring-1 ring-white/40
+              shadow-[0_0_24px_rgba(255,255,255,0.25)]
               transition-all duration-300 ease-in-out
+
+              ${
+                open()
+                  ? "opacity-90 hover:opacity-100"
+                  : "opacity-40 hover:opacity-100"
+              }
+
+              hover:bg-white/85
+              hover:ring-white/70
+              hover:shadow-[0_0_36px_rgba(255,255,255,0.55)]
+
               ${
                 open()
                   ? "h-17 w-17 sm:h-18 sm:w-18 md:h-19 md:w-19 lg:h-20 lg:w-20"
