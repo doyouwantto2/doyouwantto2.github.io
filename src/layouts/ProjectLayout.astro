@@ -1,0 +1,67 @@
+<div class="relative w-full">
+  <input id="analysis-sidebar" type="checkbox" class="peer hidden" />
+
+  <label
+    for="analysis-sidebar"
+    class="pointer-events-none fixed inset-0 z-30 bg-black/50 opacity-0
+           transition-opacity
+           peer-checked:pointer-events-auto peer-checked:opacity-100
+           lg:hidden"
+  ></label>
+
+  <aside
+    class="fixed right-0 top-0 z-40 h-full
+           w-[90vw] max-w-md
+           translate-x-full
+           overflow-y-auto bg-gray-800 p-6 shadow-2xl
+           transition-transform
+           peer-checked:translate-x-0
+           lg:hidden"
+  >
+    <div class="mb-5 flex items-center justify-between">
+      <p class="text-2xl font-bold text-green-400">Analysis</p>
+      <label
+        for="analysis-sidebar"
+        class="cursor-pointer text-3xl leading-none px-2">×</label
+      >
+    </div>
+
+    <slot name="analysis" />
+  </aside>
+
+  <label
+    for="analysis-sidebar"
+    class="fixed bottom-10 right-10 z-30 flex h-14 w-14 cursor-pointer
+           items-center justify-center rounded-full bg-cyan-800 text-white
+           shadow-xl
+           active:scale-95 transition-transform
+           lg:hidden"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      width="26"
+      height="26"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+    >
+      <line x1="6" y1="20" x2="6" y2="12"></line>
+      <line x1="12" y1="20" x2="12" y2="6"></line>
+      <line x1="18" y1="20" x2="18" y2="14"></line>
+    </svg>
+  </label>
+
+  <div
+    class="grid w-full grid-cols-1 gap-5 pt-10
+           lg:grid-cols-[minmax(0,73fr)_minmax(0,27fr)]"
+  >
+    <main class="min-w-0 w-full">
+      <slot />
+    </main>
+
+    <aside class="hidden lg:block">
+      <slot name="analysis" />
+    </aside>
+  </div>
+</div>
