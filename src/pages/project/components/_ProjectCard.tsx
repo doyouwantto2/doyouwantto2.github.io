@@ -27,7 +27,7 @@ export default function projectCard({ project }: Props) {
 
         <div class="flex flex-col flex-wrap mt-3">
           <span class="font-bold text-xl">Languages:</span>
-          <div class="flex flex-row gap-3 text-xl">
+          <div class="flex flex-row gap-3 text-xl flex-wrap">
             {content.languages.map((item) => (
               <p>{item}</p>
             ))}
