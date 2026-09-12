@@ -11,7 +11,7 @@ const project = defineCollection({
     name: z.string(),
     description: z.string(),
     url: z.string(),
-    languages: z.array(string()),
+    stack: z.array(string()),
     pubDate: z.coerce.date(),
   }),
 });

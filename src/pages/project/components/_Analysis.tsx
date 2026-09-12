@@ -2,7 +2,7 @@ import { createEffect, createMemo, For } from "solid-js";
 import * as d3 from "d3";
 
 interface AnalysisProps {
-  projects: Array<{ languages: string[] }>;
+  projects: Array<{ stack: string[] }>;
 }
 
 interface LangStat {
@@ -20,7 +20,7 @@ export default function Analysis(props: AnalysisProps) {
     const projectMap = new Map<string, number>();
 
     for (const p of props.projects) {
-      const langs = p.languages ?? [];
+      const langs = p.stack ?? [];
       new Set(langs).forEach((l) =>
         projectMap.set(l, (projectMap.get(l) ?? 0) + 1),
       );
@@ -203,9 +203,6 @@ export default function Analysis(props: AnalysisProps) {
       <p class="text-center text-green-400 font-bold text-xl">Analysis</p>
 
       <section class="flex flex-col gap-3">
-        <h3 class="text-xs uppercase tracking-widest text-gray-400">
-          Language composition
-        </h3>
         <svg ref={pieRef} />
         <ul class="flex flex-wrap gap-x-3 gap-y-1 justify-center text-xs">
           <For each={stats()}>

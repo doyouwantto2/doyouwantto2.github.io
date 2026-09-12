@@ -19,7 +19,6 @@
            lg:hidden"
   >
     <div class="mb-5 flex items-center justify-between">
-      <p class="text-2xl font-bold text-green-400">Analysis</p>
       <label
         for="analysis-sidebar"
         class="cursor-pointer text-3xl leading-none px-2">×</label
@@ -54,14 +53,16 @@
 
   <div
     class="grid w-full grid-cols-1 gap-5 pt-10
-           lg:grid-cols-[minmax(0,73fr)_minmax(0,27fr)]"
+            lg:grid-cols-[minmax(0,78fr)_minmax(0,22fr)]"
   >
     <main class="min-w-0 w-full">
       <slot />
     </main>
 
     <aside class="hidden lg:block">
-      <slot name="analysis" />
+      <div class="sticky top-5">
+        <slot name="analysis" />
+      </div>
     </aside>
   </div>
 </div>

@@ -17,7 +17,7 @@ const renderedProjects = await Promise.all(
 );
 
 const analysisData = projects.map((p) => ({
-  languages: (p.data.languages as string[]) ?? [],
+  stack: (p.data.stack as string[]) ?? [],
 }));
 ---
 
