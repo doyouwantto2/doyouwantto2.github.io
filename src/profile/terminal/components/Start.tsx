@@ -1,7 +1,8 @@
-import { createSignal, onMount, onCleanup, For } from "solid-js";
+import { createSignal, onMount, onCleanup, For, Show } from "solid-js";
 
 interface StartProps {
   onComplete?: () => void;
+  completed?: boolean;
 }
 
 const ASCII_PORTFOLIO = `
@@ -51,6 +52,8 @@ export default function Start(props: StartProps) {
   const [isTouch, setIsTouch] = createSignal(false);
 
   const advance = () => {
+    if (props.completed) return;
+
     if (step() < SCRIPT_STEPS.length - 1) {
       setStep((prev) => prev + 1);
     } else {
@@ -62,9 +65,8 @@ export default function Start(props: StartProps) {
     setIsTouch(window.matchMedia("(pointer: coarse)").matches);
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        advance();
-      }
+      if (props.completed) return;
+      if (e.key === "Enter") advance();
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -76,21 +78,24 @@ export default function Start(props: StartProps) {
     return isTouch() ? s.promptMobile : s.promptDesktop;
   };
 
+  const visibleSteps = () =>
+    props.completed ? SCRIPT_STEPS : SCRIPT_STEPS.slice(0, step() + 1);
+
   return (
     <div
-      class="font-mono text-sm leading-relaxed select-none flex flex-col justify-between
-             cursor-pointer"
+      class="font-mono text-sm leading-relaxed select-none flex flex-col"
+      classList={{ "cursor-pointer": !props.completed }}
       onClick={advance}
     >
       <div class="space-y-4">
-        <For each={SCRIPT_STEPS.slice(0, step() + 1)}>
-          {(item) => <div>{item.content}</div>}
-        </For>
+        <For each={visibleSteps()}>{(item) => <div>{item.content}</div>}</For>
       </div>
 
-      <div class="mt-6 flex items-center gap-2 text-yellow-400 animate-pulse">
-        <span>{currentPrompt()}</span>
-      </div>
+      <Show when={!props.completed}>
+        <div class="mt-6 flex items-center gap-2 text-yellow-400 animate-pulse">
+          <span>{currentPrompt()}</span>
+        </div>
+      </Show>
     </div>
   );
 }

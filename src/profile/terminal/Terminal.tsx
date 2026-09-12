@@ -13,22 +13,36 @@ interface TerminalProps {
 
 export default function Terminal(props: TerminalProps) {
   const [isStarted, setIsStarted] = createSignal(false);
+  const [showStart, setShowStart] = createSignal(true);
 
   return (
     <div
-      style={{ height: props.height }}
+      style={{ height: props.height ?? "500px" }}
       class="w-full max-h-[80vh] min-h-0 flex flex-col
              bg-[#1c1c1e] rounded-xl font-mono text-sm text-green-400
              shadow-2xl border border-gray-800/80 overflow-hidden"
     >
       <TabBar title={props.title} />
 
-      <div class="p-5 flex-1 min-h-0 flex flex-col">
-        <Show
-          when={isStarted()}
-          fallback={<Start onComplete={() => setIsStarted(true)} />}
-        >
-          <CommandFlow steps={props.steps} prompt={props.prompt} />
+      <div
+        class="p-5 flex-1 min-h-0 overflow-y-auto
+               [&::-webkit-scrollbar]:hidden
+               [scrollbar-width:none]
+               [-ms-overflow-style:none]"
+      >
+        <Show when={showStart()}>
+          <Start
+            completed={isStarted()}
+            onComplete={() => setIsStarted(true)}
+          />
+        </Show>
+
+        <Show when={isStarted()}>
+          <CommandFlow
+            steps={props.steps}
+            prompt={props.prompt}
+            onClear={() => setShowStart(false)}
+          />
         </Show>
       </div>
     </div>

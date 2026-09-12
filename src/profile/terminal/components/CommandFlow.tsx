@@ -8,6 +8,7 @@ export interface CommandStep {
 interface CommandFlowProps {
   prompt?: string;
   steps?: CommandStep[];
+  onClear?: () => void;
 }
 
 const rawFiles = import.meta.glob("../files/*.txt", {
@@ -30,19 +31,36 @@ export default function CommandFlow(props: CommandFlowProps) {
   );
   const [input, setInput] = createSignal("");
   let inputRef: HTMLInputElement | undefined;
-  let scrollRef: HTMLDivElement | undefined;
+  let wrapperRef: HTMLDivElement | undefined;
+  let isFirstRun = true;
 
   const promptText = () => props.prompt ?? "doyouwantto2@portfolio:~$";
 
+  const scrollToBottom = () => {
+    let el = wrapperRef?.parentElement;
+    while (el) {
+      const style = getComputedStyle(el);
+      if (
+        (style.overflowY === "auto" || style.overflowY === "scroll") &&
+        el.scrollHeight > el.clientHeight
+      ) {
+        el.scrollTop = el.scrollHeight;
+        return;
+      }
+      el = el.parentElement;
+    }
+  };
+
   createEffect(() => {
     history();
-    if (scrollRef) scrollRef.scrollTop = scrollRef.scrollHeight;
-  });
 
-  const handleInput = (value: string) => {
-    setInput(value);
-    if (scrollRef) scrollRef.scrollTop = scrollRef.scrollHeight;
-  };
+    if (isFirstRun) {
+      isFirstRun = false;
+      return;
+    }
+
+    scrollToBottom();
+  });
 
   const handleAutoComplete = () => {
     const val = input().trimStart();
@@ -75,6 +93,7 @@ export default function CommandFlow(props: CommandFlowProps) {
     switch (mainCmd) {
       case "clear":
         setHistory([]);
+        props.onClear?.();
         return;
       case "ls":
         output = Object.keys(VIRTUAL_FILES).join("   ");
@@ -84,9 +103,6 @@ export default function CommandFlow(props: CommandFlowProps) {
         else if (VIRTUAL_FILES[targetFile]) output = VIRTUAL_FILES[targetFile];
         else output = `cat: ${targetFile}: No such file or directory`;
         break;
-      case "enter":
-        setHistory((prev) => [...prev, { cmd: rawCmd, output: "" }]);
-        return;
       default:
         output = `command not found, please try: ls, cat, clear`;
         break;
@@ -116,12 +132,8 @@ export default function CommandFlow(props: CommandFlowProps) {
 
   return (
     <div
-      ref={scrollRef}
-      class="font-mono text-sm leading-relaxed text-gray-200 h-full min-h-0
-             overflow-y-auto
-             [&::-webkit-scrollbar]:hidden
-             [scrollbar-width:none]
-             [-ms-overflow-style:none]"
+      ref={wrapperRef}
+      class="font-mono text-sm leading-relaxed text-gray-200 mt-6"
       onClick={() => inputRef?.focus()}
     >
       <For each={history()}>
@@ -146,7 +158,7 @@ export default function CommandFlow(props: CommandFlowProps) {
           ref={inputRef}
           type="text"
           value={input()}
-          onInput={(e) => handleInput(e.currentTarget.value)}
+          onInput={(e) => setInput(e.currentTarget.value)}
           class="flex-1 bg-transparent border-none outline-none text-white caret-green-400 font-mono"
           spellcheck={false}
           autocomplete="off"
