@@ -7,6 +7,10 @@ interface Props {
 export default function PostCard({ post }: Props) {
   const content = post.data;
 
+  const formattedDate = new Intl.DateTimeFormat("en", {
+    dateStyle: "medium",
+  }).format(content.pubDate);
+
   const search = (name: string) => {
     const params = new URLSearchParams();
     params.set("tag", name);
@@ -16,15 +20,21 @@ export default function PostCard({ post }: Props) {
 
   return (
     <article class="w-full rounded-2xl bg-gray-600 p-5">
-      <div class="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <div class="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
         <a
-          class="text-2xl font-bold hover:underline"
+          class="text-2xl text-green-400 font-bold hover:underline"
           href={"/blog/" + content.id}
         >
           {content.title}
         </a>
 
-        <div class="shrink-0">{content.pubDate.toDateString()}</div>
+        <div
+          class="text-green-400/80 border-l border-green-400/30 pl-3
+                 shrink-0 whitespace-nowrap
+                 text-xs sm:text-sm lg:text-base"
+        >
+          {formattedDate}
+        </div>
       </div>
 
       <div class="flex flex-row flex-wrap gap-2">
