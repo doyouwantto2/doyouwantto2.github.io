@@ -14,7 +14,7 @@ const DETAILS = [
   {
     label: "Skills",
     value:
-      "Clean architecture, DDD, high-performance & scalable applications, UX design",
+      "Clean architecture, DDD, high-performance & scalable applications, low level understanding",
   },
   { label: "OS", value: "NixOS, Debian" },
   { label: "Tools", value: "Wezterm, Neovim, VSCode" },
