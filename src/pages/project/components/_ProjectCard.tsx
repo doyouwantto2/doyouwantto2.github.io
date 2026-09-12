@@ -18,7 +18,7 @@ export default function projectCard({ project }: Props) {
             {content.name}
           </a>
           <div
-            class="text-green-400 border-l pl-3 shrink-0
+            class="border-l pl-3 shrink-0
               text-xs sm:text-sm lg:text-base whitespace-nowrap"
           >
             {content.pubDate.toDateString()}

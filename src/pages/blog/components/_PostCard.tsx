@@ -29,7 +29,7 @@ export default function PostCard({ post }: Props) {
         </a>
 
         <div
-          class="text-green-400/80 border-l border-green-400/30 pl-3
+          class="border-l pl-3
                  shrink-0 whitespace-nowrap
                  text-xs sm:text-sm lg:text-base"
         >
