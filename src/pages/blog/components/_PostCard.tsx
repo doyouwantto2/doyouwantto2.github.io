@@ -22,7 +22,7 @@ export default function PostCard({ post }: Props) {
     <article class="w-full rounded-2xl bg-gray-600 p-5">
       <div class="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
         <a
-          class="text-2xl text-green-400 font-bold hover:underline"
+          class="text-2xl font-bold hover:underline"
           href={"/blog/" + content.id}
         >
           {content.title}

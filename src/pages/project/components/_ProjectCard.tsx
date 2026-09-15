@@ -13,7 +13,7 @@ export default function projectCard({ project }: Props) {
         <div class="flex flex-row justify-between items-center gap-3">
           <a
             href={content.url}
-            class="font-bold text-xl sm:text-3xl lg:text-4xl text-green-400"
+            class="font-bold text-xl sm:text-3xl lg:text-4xl"
           >
             {content.name}
           </a>
