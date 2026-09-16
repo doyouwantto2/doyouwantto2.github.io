@@ -68,7 +68,7 @@ export default function ChildOrb(props: ChildOrbProps) {
         xPercent: -50,
         yPercent: -50,
         opacity: 1,
-        duration: 0.1,
+        duration: 0.2,
         delay: 0.02,
         paused: true,
       });
@@ -98,7 +98,7 @@ export default function ChildOrb(props: ChildOrbProps) {
         ref={ref}
         class="
           absolute top-0 left-0
-          [--orb-r:150px]
+          [--orb-r:120px]
           sm:[--orb-r:150px]
           md:[--orb-r:180px]
           lg:[--orb-r:200px]

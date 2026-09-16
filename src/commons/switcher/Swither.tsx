@@ -17,7 +17,10 @@ const pathList: PathProps[] = [
 
 export default function Switcher({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = createSignal(false);
+  const [isTouch, setIsTouch] = createSignal(false);
   let switcherRef: HTMLDivElement | undefined;
+
+  const active = () => isTouch() && open();
 
   const current = () => {
     const sorted = [...pathList].sort((a, b) => b.link.length - a.link.length);
@@ -44,6 +47,7 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
   };
 
   onMount(() => {
+    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
     document.addEventListener("click", handleOutsideClick);
     onCleanup(() => {
       document.removeEventListener("click", handleOutsideClick);
@@ -72,7 +76,6 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
           transform-origin: center;
           will-change: transform, opacity, filter;
 
-          /* Mặc định: mờ hơn nữa */
           opacity: 0.18;
           filter:
             drop-shadow(0 0 1px rgba(255, 255, 255, 0.2))
@@ -92,15 +95,17 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
           will-change: transform;
         }
 
-        /* Hover: sáng rõ + xoay nhanh hơn */
-        .orb-wrapper:hover .neon-ring-outer {
+        /* Hover (desktop) hoặc is-active (mobile) → sáng rõ + quay nhanh */
+        .orb-wrapper:hover .neon-ring-outer,
+        .orb-wrapper.is-active .neon-ring-outer {
           opacity: 1;
           filter:
             drop-shadow(0 0 2px rgba(255, 255, 255, 0.95))
             drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
         }
 
-        .orb-wrapper:hover .neon-ring-inner {
+        .orb-wrapper:hover .neon-ring-inner,
+        .orb-wrapper.is-active .neon-ring-inner {
           animation-play-state: running;
         }
       `}</style>
@@ -110,20 +115,24 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
           class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
           onClick={() => setOpen((value) => !value)}
         >
-          <div class="orb-wrapper relative w-fit">
+          <div
+            class="orb-wrapper relative w-fit"
+            classList={{ "is-active": active() }}
+          >
             <MainOrb
               class={`
                 flex cursor-pointer items-center justify-center
                 rounded-full
-                bg-white/50
                 text-black
                 ring-1 ring-white/50
                 transition-all duration-300 ease-in-out
 
                 ${
-                  open()
-                    ? "opacity-100 hover:bg-white"
-                    : "opacity-90 hover:opacity-100 hover:bg-white/85"
+                  active()
+                    ? "bg-white opacity-100"
+                    : `bg-white/60 ${
+                        open() ? "opacity-100" : "opacity-90"
+                      } hover:bg-white hover:opacity-100`
                 }
 
                 ${
@@ -135,7 +144,7 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
               open={open()}
               name={current()?.name ?? ""}
             />
-            <NeonRing baseDuration={10} hoverDuration={1.5} />
+            <NeonRing baseDuration={14} hoverDuration={2} />
           </div>
         </div>
 
