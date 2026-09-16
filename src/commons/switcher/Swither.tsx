@@ -1,6 +1,7 @@
 import { createSignal, Index, onMount, onCleanup } from "solid-js";
 import MainOrb from "./components/MainOrb";
 import ChildOrb from "./components/ChildOrb";
+import NeonRing from "./components/NeonRing";
 
 interface PathProps {
   name: string;
@@ -16,7 +17,6 @@ const pathList: PathProps[] = [
 
 export default function Switcher({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = createSignal(false);
-
   let switcherRef: HTMLDivElement | undefined;
 
   const current = () => {
@@ -37,9 +37,7 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
 
   const handleOutsideClick = (event: MouseEvent) => {
     if (!open()) return;
-
     const target = event.target as Node;
-
     if (switcherRef && !switcherRef.contains(target)) {
       setOpen(false);
     }
@@ -61,43 +59,84 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
         left-[5em] bottom-[5em]
         sm:left-[7em] sm:bottom-[7em]
         md:left-[7em] md:bottom-[7em]
-        lg:left-[8em] lg:bottom-[8em]
       "
     >
+      <style>{`
+        @keyframes neon-spin {
+          to { transform: rotate(360deg); }
+        }
+
+        .neon-ring-outer {
+          animation: neon-spin var(--neon-base-duration, 8s) linear infinite;
+          animation-direction: var(--neon-direction, normal);
+          transform-origin: center;
+          will-change: transform, opacity, filter;
+
+          /* Mặc định: mờ hơn nữa */
+          opacity: 0.18;
+          filter:
+            drop-shadow(0 0 1px rgba(255, 255, 255, 0.2))
+            drop-shadow(0 0 2px rgba(255, 255, 255, 0.05));
+
+          transition:
+            opacity 320ms ease-out,
+            filter 320ms ease-out;
+        }
+
+        .neon-ring-inner {
+          animation: neon-spin var(--neon-inner-duration, 3s) linear infinite;
+          animation-direction: var(--neon-direction, normal);
+          animation-play-state: paused;
+          transform-box: view-box;
+          transform-origin: center;
+          will-change: transform;
+        }
+
+        /* Hover: sáng rõ + xoay nhanh hơn */
+        .orb-wrapper:hover .neon-ring-outer {
+          opacity: 1;
+          filter:
+            drop-shadow(0 0 2px rgba(255, 255, 255, 0.95))
+            drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+        }
+
+        .orb-wrapper:hover .neon-ring-inner {
+          animation-play-state: running;
+        }
+      `}</style>
+
       <div class="relative h-0 w-0">
         <div
           class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
           onClick={() => setOpen((value) => !value)}
         >
-          <MainOrb
-            class={`
-              flex cursor-pointer items-center justify-center
-              rounded-full
-              bg-white/60 backdrop-blur-xl
-              text-black
-              ring-1 ring-white/40
-              shadow-[0_0_24px_rgba(255,255,255,0.25)]
-              transition-all duration-300 ease-in-out
+          <div class="orb-wrapper relative w-fit">
+            <MainOrb
+              class={`
+                flex cursor-pointer items-center justify-center
+                rounded-full
+                bg-white/50
+                text-black
+                ring-1 ring-white/50
+                transition-all duration-300 ease-in-out
 
-              ${
-                open()
-                  ? "opacity-90 hover:opacity-100"
-                  : "opacity-40 hover:opacity-100"
-              }
+                ${
+                  open()
+                    ? "opacity-100 hover:bg-white"
+                    : "opacity-90 hover:opacity-100 hover:bg-white/85"
+                }
 
-              hover:bg-white/85
-              hover:ring-white/70
-              hover:shadow-[0_0_36px_rgba(255,255,255,0.55)]
-
-              ${
-                open()
-                  ? "h-17 w-17 sm:h-18 sm:w-18 md:h-19 md:w-19 lg:h-20 lg:w-20"
-                  : "h-19 w-19 sm:w-20 sm:h-20 md:h-21 md:w-21 lg:h-22 lg:w-22"
-              }
-            `}
-            open={open()}
-            name={current()?.name ?? ""}
-          />
+                ${
+                  open()
+                    ? "h-15 w-15 sm:h-16 sm:w-16 md:h-17 md:w-17 lg:h-18 lg:w-18"
+                    : "h-17 w-17 sm:w-18 sm:h-18 md:h-19 md:w-19 lg:h-20 lg:w-20"
+                }
+              `}
+              open={open()}
+              name={current()?.name ?? ""}
+            />
+            <NeonRing baseDuration={10} hoverDuration={1.5} />
+          </div>
         </div>
 
         <div class="pointer-events-none absolute top-0 left-0 h-0 w-0">
