@@ -23,7 +23,14 @@ for (const path in rawFiles) {
   if (fileName) VIRTUAL_FILES[fileName] = rawFiles[path];
 }
 
-const COMMANDS = ["ls", "cat", "clear"];
+const COMMANDS = ["ls", "cat", "clear", "help"];
+
+const HELP_TEXT = [
+  "Available commands:",
+  "  ls            list files in the current directory",
+  "  cat <file>    print the content of a file",
+  "  clear         clear the terminal screen",
+].join("\n");
 
 export default function CommandFlow(props: CommandFlowProps) {
   const [history, setHistory] = createSignal<{ cmd: string; output: string }[]>(
@@ -95,6 +102,9 @@ export default function CommandFlow(props: CommandFlowProps) {
         setHistory([]);
         props.onClear?.();
         return;
+      case "help":
+        output = HELP_TEXT;
+        break;
       case "ls":
         output = Object.keys(VIRTUAL_FILES).join("   ");
         break;
@@ -104,7 +114,7 @@ export default function CommandFlow(props: CommandFlowProps) {
         else output = `cat: ${targetFile}: No such file or directory`;
         break;
       default:
-        output = `command not found, please try: ls, cat, clear`;
+        output = `command not found, please try: ${COMMANDS.join(", ")}`;
         break;
     }
 
