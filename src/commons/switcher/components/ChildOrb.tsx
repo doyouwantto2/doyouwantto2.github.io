@@ -98,7 +98,7 @@ export default function ChildOrb(props: ChildOrbProps) {
         ref={ref}
         class="
           absolute top-0 left-0
-          [--orb-r:120px]
+          [--orb-r:140px]
           sm:[--orb-r:150px]
           md:[--orb-r:180px]
           lg:[--orb-r:200px]
@@ -111,8 +111,8 @@ export default function ChildOrb(props: ChildOrbProps) {
               rounded-full cursor-pointer
               text-black text-sm font-medium
 
-              h-22 w-22
-              sm:h-23 sm:w-23
+              h-18 w-18
+              sm:h-22 sm:w-22
               md:h-24 md:w-24
 
               bg-white/70

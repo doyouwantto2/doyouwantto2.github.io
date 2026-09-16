@@ -95,16 +95,24 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
           will-change: transform;
         }
 
-        /* Hover (desktop) hoặc is-active (mobile) → sáng rõ + quay nhanh */
-        .orb-wrapper:hover .neon-ring-outer,
+        @media (hover: hover) {
+          .orb-wrapper:hover .neon-ring-outer {
+            opacity: 1;
+            filter:
+              drop-shadow(0 0 2px rgba(255, 255, 255, 0.95))
+              drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+          }
+          .orb-wrapper:hover .neon-ring-inner {
+            animation-play-state: running;
+          }
+        }
+
         .orb-wrapper.is-active .neon-ring-outer {
           opacity: 1;
           filter:
             drop-shadow(0 0 2px rgba(255, 255, 255, 0.95))
             drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
         }
-
-        .orb-wrapper:hover .neon-ring-inner,
         .orb-wrapper.is-active .neon-ring-inner {
           animation-play-state: running;
         }
@@ -137,8 +145,8 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
 
                 ${
                   open()
-                    ? "h-15 w-15 sm:h-16 sm:w-16 md:h-17 md:w-17 lg:h-18 lg:w-18"
-                    : "h-17 w-17 sm:w-18 sm:h-18 md:h-19 md:w-19 lg:h-20 lg:w-20"
+                    ? "h-14 w-14 sm:h-16 sm:w-16 md:h-17 md:w-17 lg:h-18 lg:w-18"
+                    : "h-16 w-16 sm:w-18 sm:h-18 md:h-19 md:w-19 lg:h-20 lg:w-20"
                 }
               `}
               open={open()}
