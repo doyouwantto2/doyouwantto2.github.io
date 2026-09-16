@@ -18,9 +18,10 @@ const pathList: PathProps[] = [
 export default function Switcher({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = createSignal(false);
   const [isTouch, setIsTouch] = createSignal(false);
+  const [activeOrb, setActiveOrb] = createSignal<"main" | number | null>(null);
   let switcherRef: HTMLDivElement | undefined;
 
-  const active = () => isTouch() && open();
+  const mainActive = () => isTouch() && activeOrb() === "main";
 
   const current = () => {
     const sorted = [...pathList].sort((a, b) => b.link.length - a.link.length);
@@ -38,11 +39,22 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
     );
   };
 
+  const handleMainClick = () => {
+    if (open()) {
+      setOpen(false);
+      setActiveOrb(null);
+    } else {
+      setOpen(true);
+      if (isTouch()) setActiveOrb("main");
+    }
+  };
+
   const handleOutsideClick = (event: MouseEvent) => {
     if (!open()) return;
     const target = event.target as Node;
     if (switcherRef && !switcherRef.contains(target)) {
       setOpen(false);
+      setActiveOrb(null);
     }
   };
 
@@ -121,11 +133,11 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
       <div class="relative h-0 w-0">
         <div
           class="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
-          onClick={() => setOpen((value) => !value)}
+          onClick={handleMainClick}
         >
           <div
             class="orb-wrapper relative w-fit"
-            classList={{ "is-active": active() }}
+            classList={{ "is-active": mainActive() }}
           >
             <MainOrb
               class={`
@@ -136,7 +148,7 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
                 transition-all duration-300 ease-in-out
 
                 ${
-                  active()
+                  mainActive()
                     ? "bg-white opacity-100"
                     : `bg-white/60 ${
                         open() ? "opacity-100" : "opacity-90"
@@ -165,6 +177,10 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
                 order={index}
                 total={children().length}
                 open={open()}
+                isActive={isTouch() && activeOrb() === index}
+                onActivate={() => {
+                  if (isTouch()) setActiveOrb(index);
+                }}
               />
             )}
           </Index>

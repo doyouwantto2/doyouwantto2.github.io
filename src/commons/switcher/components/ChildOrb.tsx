@@ -8,6 +8,8 @@ interface ChildOrbProps {
   order: number;
   total: number;
   open: boolean;
+  isActive: boolean;
+  onActivate: () => void;
 }
 
 const readCssLengthPx = (
@@ -68,7 +70,7 @@ export default function ChildOrb(props: ChildOrbProps) {
         xPercent: -50,
         yPercent: -50,
         opacity: 1,
-        duration: 0.2,
+        duration: 0.1,
         delay: 0.02,
         paused: true,
       });
@@ -93,18 +95,22 @@ export default function ChildOrb(props: ChildOrbProps) {
         "pointer-events-auto": props.open,
         "pointer-events-none": !props.open,
       }}
+      onTouchStart={props.onActivate}
     >
       <div
         ref={ref}
         class="
           absolute top-0 left-0
-          [--orb-r:140px]
+          [--orb-r:150px]
           sm:[--orb-r:150px]
           md:[--orb-r:180px]
           lg:[--orb-r:200px]
         "
       >
-        <div class="orb-wrapper relative w-fit">
+        <div
+          class="orb-wrapper relative w-fit"
+          classList={{ "is-active": props.isActive }}
+        >
           <div
             class="
               flex items-center justify-center
@@ -115,13 +121,14 @@ export default function ChildOrb(props: ChildOrbProps) {
               sm:h-22 sm:w-22
               md:h-24 md:w-24
 
-              bg-white/70
               ring-1 ring-white/50
 
               transition-colors duration-200 ease-out
-
-              hover:bg-white/90
             "
+            classList={{
+              "bg-white/70 hover:bg-white/90": !props.isActive,
+              "bg-white": props.isActive,
+            }}
           >
             {props.name}
           </div>
