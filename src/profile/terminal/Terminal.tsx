@@ -26,9 +26,16 @@ export default function Terminal(props: TerminalProps) {
 
       <div
         class="p-5 flex-1 min-h-0 overflow-y-auto
-               [&::-webkit-scrollbar]:hidden
-               [scrollbar-width:none]
-               [-ms-overflow-style:none]"
+               [scrollbar-width:thin]
+               [scrollbar-color:theme(colors.gray.700)_transparent]
+
+               [&::-webkit-scrollbar]:w-1.5
+               [&::-webkit-scrollbar]:h-1.5
+               [&::-webkit-scrollbar-track]:bg-transparent
+               [&::-webkit-scrollbar-thumb]:rounded-full
+               [&::-webkit-scrollbar-thumb]:bg-gray-700/60
+               hover:[&::-webkit-scrollbar-thumb]:bg-gray-600
+               [&::-webkit-scrollbar-corner]:bg-transparent"
       >
         <Show when={showStart()}>
           <Start
