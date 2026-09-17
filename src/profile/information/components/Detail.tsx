@@ -5,7 +5,7 @@ const DETAILS = [
   {
     label: "Technologies",
     value:
-      "Tokio, Tauri, Astro, SolidJS, NodeJS, ReactJS, Ethereum, PostgreSQL, Neo4j",
+      "Tokio, Tauri, Astro, SolidJS, NodeJS, ReactJS, Ethereum, PostgreSQL, Neo4j, Docker",
   },
   {
     label: "Languages",
