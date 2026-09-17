@@ -13,12 +13,12 @@ interface StartProps {
 }
 
 const ASCII_PORTFOLIO = `
-██████╗  ██████╗ ██╗   ██╗ ██████╗ ██╗   ██╗██╗    ██╗ █████╗ ███╗   ██╗████████╗████████╗ ██████╗ ██████╗
-██╔══██╗██╔═══██╗╚██╗ ██╔╝██╔═══██╗██║   ██║██║    ██║██╔══██╗████╗  ██║╚══██╔══╝╚══██╔══╝██╔═══██╗╚════██╗
-██║  ██║██║   ██║ ╚████╔╝ ██║   ██║██║   ██║██║ █╗ ██║███████║██╔██╗ ██║   ██║      ██║   ██║   ██║ █████╔╝
-██║  ██║██║   ██║  ╚██╔╝  ██║   ██║██║   ██║██║███╗██║██╔══██║██║╚██╗██║   ██║      ██║   ██║   ██║██╔═══╝
-██████╔╝╚██████╔╝   ██║   ╚██████╔╝╚██████╔╝╚███╔███╔╝██║  ██║██║ ╚████║   ██║      ██║   ╚██████╔╝███████╗
-╚═════╝  ╚═════╝    ╚═╝    ╚═════╝  ╚═════╝  ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝      ╚═╝    ╚═════╝ ╚══════╝
+██╗  ██╗██╗
+██║  ██║██║
+███████║██║
+██╔══██║██║
+██║  ██║██║
+╚═╝  ╚═╝╚═╝
 `;
 
 const SCRIPT_STEPS = [
@@ -70,7 +70,7 @@ const SCRIPT_STEPS = [
         <p class="font-bold text-yellow-400">[ HOBBIES ]</p>
         <p>✧ Listening to Japanese news (NHK, podcasts)</p>
         <p>✧ Coding — building small tools and side projects</p>
-        <p>✧ Music — mostly while studying or coding</p>
+        <p>✧ Classical music — mostly while studying or coding</p>
         <p>✧ Reading tech blogs &amp; exploring new frameworks</p>
       </div>
     ),
