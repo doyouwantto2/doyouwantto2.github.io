@@ -11,16 +11,10 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   </head>
 
   <BaseLayout>
-    <canvas id="three-canvas" class="fixed inset-0 h-screen w-screen"></canvas>
+    <div class="min-h-[70vh] flex items-center justify-center px-6 text-center">
+      <p class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+        This's still experimental
+      </p>
+    </div>
   </BaseLayout>
-
-  <script>
-    import { createWater } from "../../shaders/water/water";
-
-    const canvas = document.querySelector<HTMLCanvasElement>("#three-canvas");
-
-    if (canvas) {
-      createWater(canvas);
-    }
-  </script>
 </html>
