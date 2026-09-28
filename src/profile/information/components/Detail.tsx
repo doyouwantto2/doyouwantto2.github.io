@@ -1,22 +1,34 @@
 const DETAILS = [
   { label: "Country", value: "Viet Nam" },
+
   { label: "English", value: "TOEIC" },
+
   { label: "Japanese", value: "N2, BJT" },
+
   {
     label: "Technologies",
     value:
       "Tokio, Tauri, Astro, SolidJS, NodeJS, ReactJS, Ethereum, PostgreSQL, Neo4j, Docker",
   },
+
   {
     label: "Languages",
     value: "Rust, C, C++, Ruby, HTML, CSS, TypeScript, JavaScript, Python, Nix",
   },
+
   {
     label: "Skills",
     value:
       "Clean architecture, DDD, high-performance & scalable applications, system design",
   },
+
+  {
+    label: "Target",
+    value: "Working in Japan as a fullstack engineer",
+  },
+
   { label: "OS", value: "NixOS, Debian" },
+
   { label: "Tools", value: "Wezterm, Neovim, VSCode" },
 ];
 
