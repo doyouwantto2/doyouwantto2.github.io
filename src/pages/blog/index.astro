@@ -6,7 +6,9 @@ import BlogLayout from "@layouts/BlogLayout.astro";
 import Breadcrumb from "./components/_Breadcrumb";
 import { getCollection } from "astro:content";
 
-const posts = await getCollection("post");
+const posts = (await getCollection("post")).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
 
 const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
 ---
