@@ -200,7 +200,7 @@ export default function Analysis(props: AnalysisProps) {
 
   return (
     <div class="sticky top-5 m-5 rounded-2xl bg-gray-700 p-5 flex flex-col gap-6">
-      <p class="text-center text-green-400 font-bold text-xl">Analysis</p>
+      <p class="text-center font-bold text-xl">Analysis</p>
 
       <section class="flex flex-col gap-3">
         <svg ref={pieRef} />
