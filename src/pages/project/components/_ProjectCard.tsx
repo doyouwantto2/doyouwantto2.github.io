@@ -11,8 +11,9 @@ export default function projectCard({ project }: Props) {
     <div class="w-full p-4 bg-gray-600 rounded-t-2xl">
       <div>
         <div class="flex flex-row justify-between items-center gap-3">
-          <div>{content.name}</div>
-
+          <p class="font-bold text-lg sm:text-2xl lg:text-3xl hover:underline">
+            {content.name}
+          </p>
           <div
             class="border-l pl-3 shrink-0
               text-xs sm:text-sm whitespace-nowrap text-gray-300"
