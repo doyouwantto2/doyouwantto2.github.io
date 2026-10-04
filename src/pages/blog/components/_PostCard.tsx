@@ -45,7 +45,7 @@ export default function PostCard({ post }: Props) {
             <button
               type="button"
               onClick={() => search(name)}
-              class="mt-1 w-fit cursor-pointer rounded-xl bg-gray-500 px-2 py-1 hover:bg-white hover:text-black md:text-sm"
+              class="mt-1 w-fit cursor-pointer rounded-xl bg-gray-500 px-1.5 py-0.5 hover:bg-white hover:text-black md:text-sm"
             >
               #{name}
             </button>
