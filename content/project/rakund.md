@@ -13,8 +13,6 @@ pubDate: 2026-10-17
 
 First off, this is a project that's mostly vibe-coded.
 
-I have no intention of hiding anything. When I set out to build a piano app, I didn't know a thing about how audio works on a computer, nor how to tune frequency, amplitude, or the ADSR envelope. Rust even has a ton of audio crates and I had no idea which one to pick.
-
 That said, this isn't a project I'm doing just for fun (at least not entirely), nor is it one where I let AI do everything from start to finish. This is a project I'm pretty serious about.
 
 ## Why I built this app
