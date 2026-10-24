@@ -1,12 +1,12 @@
 ---
 id: "ofmis"
 name: "OFMIS"
-description: "Open Federated Multi-agent Immune System."
+description: "Open Fault-tolerant Multi-agent Immune System."
 url: ""
 stack:
   - "Blockchain"
   - "Sqlite"
-  - "MongoDB"
+  - "PostgreSQL"
   - "Python"
 pubDate: 2026-10-16
 ---

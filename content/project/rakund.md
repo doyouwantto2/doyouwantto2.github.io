@@ -13,7 +13,7 @@ pubDate: 2026-4-17
 
 ## Introduction
 
-This project started with a small inconvenience and a much larger question. Like many people, I first learned to play piano on a computer keyboard rather than a real instrument — practical, but never fully natural. The more I played, the more I wondered who gets left out when playing music depends on being able to see the keyboard. That question eventually became Rakund.
+I first learned to play piano on a computer keyboard rather than a real one. The more I knew, the more I wondered who gets left out when playing music depends on being able to see the keyboard, such as blind people. That question back then eventually become this project.
 
 ## Early challenges
 
