@@ -8,14 +8,10 @@ stack:
   - "Typescript"
   - "SolidJS"
   - "Tauri"
-pubDate: 2026-10-17
+pubDate: 2026-4-17
 ---
 
-First off, this is a project that's mostly vibe-coded.
-
-That said, this isn't a project I'm doing just for fun (at least not entirely), nor is it one where I let AI do everything from start to finish. This is a project I'm pretty serious about.
-
-## Why I built this app
+## Introduction
 
 Back when my family couldn't afford a piano, I turned to [Everyone Piano](https://www.everyonepiano.com/) to play. But one problem I ran into with Everyone Piano was that without a keyboard with a numpad, you can't play a song to its full extent. This is a big inconvenience on a laptop — to play well you have to memorize the exact position of every key, and when you're in an environment where you can't see the keyboard, I wanted to be able to play through touch typing instead, which would be far more convenient.
 
@@ -27,9 +23,9 @@ Of course, it comes with no shortage of challenges. I know a bit of music theory
 
 First, I decided the project had to be split into two phases. Phase one was to see whether it was even feasible (this one), and phase two was to figure out what to do with it.
 
-## Phase 1: Proving feasibility
+## Proving feasibility
 
-I'd been working in C quite a lot, but after dealing with memory leaks one too many times, I decided to move to Rust — and honestly, I haven't looked back since.
+I'd been working in C quite a lot, but after dealing with memory leaks one too many times, I decided to move to Rust.
 
 My initial goal was to build a CLI app to test whether it could run at all — I used [ratatui](https://ratatui.rs/). Later, because of debugging issues, I switched it over to Tauri.
 
@@ -37,7 +33,7 @@ Of course, I didn't know anything about FE or frameworks. And the most popular f
 
 After picking SolidJS, I basically let AI write the entire UI. Honestly, building effects or APIs wasn't a problem anymore, since Tauri uses a frontend–backend model rather than the hybrid approach of Electron, so each part stays in its own lane — pretty convenient.
 
-## Phase 2: Going deep into the backend
+## Going deep into the backend
 
 But down in the backend, things get much more complicated. I ran into three main problems.
 
@@ -45,7 +41,9 @@ But down in the backend, things get much more complicated. I ran into three main
 
 **The second problem was file decompression.** WAV and FLAC are two different audio formats. WAV is uncompressed, while FLAC is compressed. During playback, FLAC gets decompressed and stored in RAM, which saves a lot of memory. But that's the current obstacle — the file doesn't have enough notes with the corresponding accents since some got compressed. To solve it, I used a JSON file to store the position of each file, accepting that some notes might end up playing the same FLAC file. Initially I planned to write a decompression algorithm and load it into RAM, but honestly I could only load the FLAC file into RAM because it was just too hard. It would've been no different from rewriting the entire source code of a sampler.
 
-**The third problem was integrating MIDI files to display notes.** The core was basically done, but for the app to be appealing enough it needed an autoplay mode. That's when I had to ask University of Youtube to teach me how MIDI files work and integrate it so it looks like those piano tutorial videos with the pretty raindrops effect.
+**The third problem was getting the sustain pedal and note-release timing right.** I had to fine-tune the settings so notes wouldn't ring out for too long or fade away too quickly. This was my first time learning about [ADSR](https://www.youtube.com/watch?v=aitRs893ado) and from this one I have knowned how audio work. Computer's audio samples are actually shaped by envelopes and processed through samplers, mixers, and other audio components to produce the sounds we hear so yeah, it's complicated.
+
+**The fourth problem was integrating MIDI files to display notes.** The core was basically done, but for the app to be appealing enough it needed an autoplay mode. That's when I had to ask ["University of Youtube"](https://www.youtube.com/watch?v=P27ml4M3V7A&t=1403s) again to teach me how MIDI files work and integrate it so it looks like those piano tutorial videos with the pretty raindrops effect.
 
 ## Result
 
@@ -59,7 +57,7 @@ Here's an image describing the play rules — it works just like playing piano w
 
 ## The name
 
-In the end, I named the project Rakund. That is, Raku in Japanese (joy) and nd from Grand Piano, combined. It means "piano of joy."
+In the end, I named the project Rakund. That is, Raku in Japanese (joy - 楽) and nd from Grand Piano, combined. It means "piano of joy."
 
 ## The future
 
