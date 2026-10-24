@@ -19,7 +19,7 @@ const DETAILS = [
   {
     label: "Skills",
     value:
-      "Clean architecture, DDD, high-performance & scalable applications, system programming",
+      "Software architecture, high-performance & scalable applications, system programming",
   },
 
   {

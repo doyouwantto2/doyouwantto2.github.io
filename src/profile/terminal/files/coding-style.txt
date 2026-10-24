@@ -1,0 +1,3 @@
+I'm a FP guy (Function Programming). I love how math was integrated to solved a bigger picture, where the boundary between math and computer science become transparent. 
+
+When coding with Rust, Typescript or Python I like how it 
