@@ -70,7 +70,7 @@ export default function ChildOrb(props: ChildOrbProps) {
         xPercent: -50,
         yPercent: -50,
         opacity: 1,
-        duration: 0.1,
+        duration: 0.2,
         delay: 0.02,
         paused: true,
       });
@@ -132,7 +132,7 @@ export default function ChildOrb(props: ChildOrbProps) {
           >
             {props.name}
           </div>
-          <NeonRing baseDuration={10} hoverDuration={1.5} reverse />
+          <NeonRing baseDuration={10} hoverDuration={3} reverse />
         </div>
       </div>
     </a>

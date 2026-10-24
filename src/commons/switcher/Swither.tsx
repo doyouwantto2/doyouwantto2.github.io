@@ -164,7 +164,7 @@ export default function Switcher({ currentPath }: { currentPath: string }) {
               open={open()}
               name={current()?.name ?? ""}
             />
-            <NeonRing baseDuration={14} hoverDuration={2} />
+            <NeonRing baseDuration={14} hoverDuration={3} />
           </div>
         </div>
 
