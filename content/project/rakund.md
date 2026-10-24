@@ -33,7 +33,7 @@ After picking SolidJS, I basically let AI write the entire UI. Honestly, buildin
 
 ## Going deep into the backend
 
-But down in the backend, things get much more complicated. I ran into three main problems.
+But down in the backend, things get much more complicated. I ran into four main problems.
 
 **The first problem was audio files.** Most of them use soundfont or sfz, but those are C libraries specific to certain software, and some aren't even open source. I solved it by using samples from [sfzinstruments](https://github.com/sfzinstruments) and learning how their format standard works to understand the principle behind it. Actually, sfz is just a text file, but it's used to map audio to the corresponding signal when one is received. Especially with piano emulator software, from what I found, it's pretty common, so leveraging sfz and sfzinstruments' samples could be seen as something I needed to prioritize.
 
