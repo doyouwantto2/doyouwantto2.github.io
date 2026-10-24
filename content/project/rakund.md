@@ -11,17 +11,17 @@ stack:
 pubDate: 2026-4-17
 ---
 
-### Introduction
+## Introduction
 
 This project started with a small inconvenience and a much larger question. Like many people, I first learned to play piano on a computer keyboard rather than a real instrument — practical, but never fully natural. The more I played, the more I wondered who gets left out when playing music depends on being able to see the keyboard. That question eventually became Rakund.
 
-### Early challenges
+## Early challenges
 
 Of course, it comes with no shortage of challenges. I know a bit of music theory but I'd never actually touched a real piano, so a lot of the time, even though I'd absorbed the knowledge, it was hard to put it to use since I didn't have the conditions to practice.
 
 First, I decided the project had to be split into two phases. Phase one was to see whether it was even feasible (this one), and phase two was to figure out what to do with it.
 
-### Proving feasibility
+## Proving feasibility
 
 I'd been working in C quite a lot, but after dealing with memory leaks one too many times, I decided to move to Rust.
 
@@ -31,7 +31,7 @@ Of course, I didn't know anything about FE or frameworks. And the most popular f
 
 After picking SolidJS, I basically let AI write the entire UI. Honestly, building effects or APIs wasn't a problem anymore, since Tauri uses a frontend–backend model rather than the hybrid approach of Electron, so each part stays in its own lane — pretty convenient.
 
-### Going deep into the backend
+## Going deep into the backend
 
 But down in the backend, things get much more complicated. I ran into three main problems.
 
@@ -43,7 +43,7 @@ But down in the backend, things get much more complicated. I ran into three main
 
 **The fourth problem was integrating MIDI files to display notes.** The core was basically done, but for the app to be appealing enough it needed an autoplay mode. That's when I had to ask ["University of Youtube"](https://www.youtube.com/watch?v=P27ml4M3V7A&t=1403s) again to teach me how MIDI files work and integrate it so it looks like those piano tutorial videos with the pretty raindrops effect.
 
-### Result
+## Result
 
 After untangling all that mess, my app can be said to run pretty smoothly. You can check out the YouTube video below for a clearer look:
 
@@ -53,11 +53,11 @@ Here's an image describing the play rules — it works just like playing piano w
 
 ![](assets/piano-play-rule.png)
 
-### The name
+## The name
 
 In the end, I named the project Rakund. That is, Raku in Japanese (joy - 楽) and nd from Grand Piano, combined. It means "piano of joy."
 
-### The future
+## The future
 
 Right now I don't plan to keep working on it since I'm in the middle of designing the next project based on this with clearer goals, especially around the overhead of running through IPC and whether to use WebAssembly instead of a native desktop app. Anyway, these are things still brewing in my head.
 
