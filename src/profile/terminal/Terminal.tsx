@@ -12,13 +12,12 @@ interface TerminalProps {
 }
 
 export default function Terminal(props: TerminalProps) {
-  const [isStarted, setIsStarted] = createSignal(false);
   const [showStart, setShowStart] = createSignal(true);
 
   return (
     <div
       style={{ height: props.height ?? "500px" }}
-      class="w-full max-h-[80vh] min-h-0 flex flex-col
+      class="w-full min-w-0 max-h-[80vh] min-h-0 flex flex-col
              bg-[#1c1c1e] rounded-xl font-mono text-sm text-green-400
              shadow-2xl border border-gray-800/80 overflow-hidden"
     >
@@ -28,7 +27,6 @@ export default function Terminal(props: TerminalProps) {
         class="p-5 flex-1 min-h-0 overflow-y-auto
                [scrollbar-width:thin]
                [scrollbar-color:theme(colors.gray.700)_transparent]
-
                [&::-webkit-scrollbar]:w-1.5
                [&::-webkit-scrollbar]:h-1.5
                [&::-webkit-scrollbar-track]:bg-transparent
@@ -38,19 +36,14 @@ export default function Terminal(props: TerminalProps) {
                [&::-webkit-scrollbar-corner]:bg-transparent"
       >
         <Show when={showStart()}>
-          <Start
-            completed={isStarted()}
-            onComplete={() => setIsStarted(true)}
-          />
+          <Start />
         </Show>
 
-        <Show when={isStarted()}>
-          <CommandFlow
-            steps={props.steps}
-            prompt={props.prompt}
-            onClear={() => setShowStart(false)}
-          />
-        </Show>
+        <CommandFlow
+          steps={props.steps}
+          prompt={props.prompt}
+          onClear={() => setShowStart(false)}
+        />
       </div>
     </div>
   );
