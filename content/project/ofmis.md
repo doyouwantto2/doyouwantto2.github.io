@@ -4,10 +4,10 @@ name: "OFMIS"
 description: "Open Fault-tolerant Multi-agent Immune System."
 url: ""
 stack:
-  - "Blockchain"
-  - "Sqlite"
-  - "PostgreSQL"
+  - "Solidity"
+  - "SQL"
   - "Python"
+  - "Bash"
 pubDate: 2026-10-16
 ---
 

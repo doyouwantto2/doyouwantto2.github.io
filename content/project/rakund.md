@@ -6,8 +6,6 @@ url: "https://github.com/doyouwantto2/rakund"
 stack:
   - "Rust"
   - "Typescript"
-  - "SolidJS"
-  - "Tauri"
 pubDate: 2026-4-17
 ---
 
@@ -27,7 +25,7 @@ I'd been working in C quite a lot, but after dealing with memory leaks one too m
 
 My initial goal was to build a CLI app to test whether it could run at all — I used [ratatui](https://ratatui.rs/). Later, because of debugging issues, I switched it over to Tauri.
 
-Of course, I didn't know anything about FE or frameworks. And the most popular framework, React, uses a virtual DOM — running on it would be like shooting myself in the foot — so I picked SolidJS as the most sensible choice to optimize performance when pushing audio through I/O. Instead of using a virtual DOM, SolidJS runs directly on the DOM and runs only once instead of having to update the DOM tree like React or other frameworks.
+Of course, I didn't know anything about FE or frameworks. And the most popular framework, React, uses a virtual DOM — running on it would be like footgunning myself — so I picked SolidJS as the most sensible choice to optimize performance when pushing audio through I/O. Instead of using a virtual DOM, SolidJS runs directly on the DOM and runs only once instead of having to update the DOM tree like React or other frameworks.
 
 After picking SolidJS, I basically let AI write the entire UI. Honestly, building effects or APIs wasn't a problem anymore, since Tauri uses a frontend–backend model rather than the hybrid approach of Electron, so each part stays in its own lane — pretty convenient.
 
