@@ -24,7 +24,7 @@ const DETAILS = [
 
   {
     label: "Target",
-    value: "Working in Japan as a fullstack engineer",
+    value: "Working in Japan as a backend engineer",
   },
 
   { label: "OS", value: "NixOS, Debian" },
