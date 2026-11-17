@@ -1,8 +1,6 @@
 const DETAILS = [
   { label: "Country", value: "Viet Nam" },
 
-  { label: "English", value: "TOEIC" },
-
   { label: "Japanese", value: "N2, BJT" },
 
   {
